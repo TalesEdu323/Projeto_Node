@@ -2,16 +2,16 @@
   "name": "Projeto_Node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TalesEdu323/Projeto_Node.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tales",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TalesEdu323/Projeto_Node/issues"
