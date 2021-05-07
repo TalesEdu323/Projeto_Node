@@ -11,4 +11,6 @@ app.get('/' , (req, res) => {
 })
 
 
-app.listen('8088')
+
+app.use(static('public'))
+app.listen(8088, () =>{ console.log('Server running on port 5050')})
