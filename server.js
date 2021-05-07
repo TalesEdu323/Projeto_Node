@@ -1,16 +1,24 @@
-const cors = require('cors')
-const express = require('express')
-const app = express ()
-app.use(cors())
+const cors = require('cors');
+const express = require('express');
+const app = express ();
+const axios = require ('axios')
 
-app.get('/' , (req, res) => {
-    return res.json([{
-        name:'qualquer coisa'},
-       {name: 'Qualquer fasfas coisa'}
-])
-})
+app.use(cors());
+
+app.get('/' , async(req, res) => {
+
+    try {
+        const {data} = await axios ('https://jsonplaceholder.typicode.com/users');
+   console.log(data)
 
 
+    return res.json(data)
 
-app.use(static('public'))
-app.listen(8088, () =>{ console.log('Server running on port 5050')})
+    } catch (error) {
+           console.log(erro)
+
+    }
+    
+});
+
+app.listen(8088, () =>{ console.log('Server running on port 8088')});
