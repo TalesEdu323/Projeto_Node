@@ -7,37 +7,54 @@
 
 <body>
 
-    <h1>jaksdjkashkd</h1>
+    <input type="text" id="repository">
+    <button onclick="postContent()">Enviar</button>
 
-    
-    <div id="teste"></div> 
-   
-
-
+    <button>buscar</button>
+    <div id="teste"></div>
     <script>
 
         async function getContent() {
             try {
-                const response = await fetch('http://localhost:8088');
-                // console.log(response)
-                const data = await response.json();
+                const response = await fetch('/home');
+                const data = await response.json(); 
+                console.log(data)
                 show(data);
                }
-
             catch (error) {
+                console.log(error.message);
                 console.log('erro');
             }
 
         }
         
+        async function postContent() {
+            const repository = document.getElementById('repository').value;
+            
+            const opt = {
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": JSON.stringify({
+                    repository,
+                    "city": "Cotia",
+                    "state": "São Paulo",
+                    "address": "Rua Osaka, 16"
+                })
+            }
+
+            let sendData = await fetch('/login', opt);
+            let dataReceived = await sendData.json();
+
+            console.log(dataReceived);
+        }
         getContent()
 
         function show(users) {
             let output = ''
             for (let user of users) {
                 output +=`<li>${user.name}<li>`
-
-
             }
             document.getElementById('teste').innerHTML = output
 
